@@ -22,6 +22,8 @@ Docker image including latest version of [Alpine](https://github.com/gliderlabs/
 Example:
 `docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days`
 
+**[Example usage in multi-container setup](https://github.com/Elders/Curator-docker/blob/master/LOGGER.md)**
+
 **Current documentation is working with:**
 > Docker version 1.11.1, build 5604cbe https://github.com/docker/docker/releases
 > 
