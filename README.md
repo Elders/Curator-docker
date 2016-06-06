@@ -1,29 +1,23 @@
-# Multi-container Docker setup for logging
+# Alpine image with recurring Elastic Search Curator job #
 
-Dockerized version of ElasticSearch, Kibana and Curator run as CRON daily task
+Docker image including latest version of [Alpine](https://github.com/gliderlabs/docker-alpine) running Elastic Search Curator as CRON daily task
 
-## What you get with this
-1. ElasticSearch container to store data being logged
-2. Kibana container to visualize data stored in ElasticSearch
-3. Alpine container with daily CRON job to delete Elastic Search indices older then 10 days using Curator
+## Usage
+`docker run -d --name {container-name} --link {elastic-search-container-name}:elasticsearch eldersoss/curator-docker --host {elastic-search-host} --port {elastic-search-port} {curator-command}`
 
-## Install
+`docker run` - [reference](https://docs.docker.com/engine/reference/run/)
+`-d` - [reference](https://docs.docker.com/engine/reference/run/#detached-d)
+`--name` - [reference](https://docs.docker.com/engine/reference/run/#name-name)
+`--link` - [reference](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/)
+`--host` - [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/host.html)
+`--port` - [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/port.html)
+`{curator-command}`- [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/commands.html)
 
-The instructions assume that you have already installed [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/)
-
-In order to get started be sure to clone this project onto your Docker Host. Create a directory on your host and clone using following command `git clone git@github.com:Elders/Docker-ElasticSearch-Kibana-Curator.git`
-
-## How to get up and running
-Once you've cloned the project navigate to the directory in which you cloned it. Run the following commands `docker-compose up -d` 
-
-The docker-compose ([docker-compose up reference](https://docs.docker.com/compose/reference/up/)) command will pull the images from Docker Hub and then link them together based on the information inside the docker-compose.yml file. This will create ports, links between containers, and configure applications as requrired
-
-> If you need to stop stated containers use `docker-compose stop` and to start it `docker-compose start`. Using of `docker-compose down` will **delete** all data (i.e the logs)
+Example:
+`docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days`
 
 **Current documentation is working with:**
 > Docker version 1.11.1, build 5604cbe https://github.com/docker/docker/releases
-> 
-> Docker-compose version 1.7.1, build 0a9ab35 https://github.com/docker/compose/releases
 > 
 > Alpine 3.3.3 https://hub.docker.com/_/alpine/
 > 
