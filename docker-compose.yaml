@@ -16,7 +16,7 @@ kibana:
     restart: always
         
 curator_with_cron:
-    build: .
+    image: eldersoss/curator-docker
     command: "--host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days"
     links:
         - log:elasticsearch
