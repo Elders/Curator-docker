@@ -6,11 +6,17 @@ Docker image including latest version of [Alpine](https://github.com/gliderlabs/
 `docker run -d --name {container-name} --link {elastic-search-container-name}:elasticsearch eldersoss/curator-docker --host {elastic-search-host} --port {elastic-search-port} {curator-command}`
 
 `docker run` - [reference](https://docs.docker.com/engine/reference/run/)
+
 `-d` - [reference](https://docs.docker.com/engine/reference/run/#detached-d)
+
 `--name` - [reference](https://docs.docker.com/engine/reference/run/#name-name)
+
 `--link` - [reference](https://docs.docker.com/engine/userguide/networking/default_network/dockerlinks/)
+
 `--host` - [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/host.html)
+
 `--port` - [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/port.html)
+
 `{curator-command}`- [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/commands.html)
 
 Example:
