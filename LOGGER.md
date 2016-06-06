@@ -14,7 +14,7 @@ The instructions assume that you have already installed [Docker](https://docs.do
 In order to get started be sure to clone this project onto your Docker Host. Create a directory on your host and clone using following command `git clone git@github.com:Elders/Curator-docker.git`
 
 ## How to get up and running
-Once you've cloned the project navigate to the directory in which you cloned it. Run the following commands `docker-compose up -d` 
+Once you've cloned the project navigate to the directory in which you cloned it. Run the following commands `docker-compose up -d`
 
 The docker-compose ([docker-compose up reference](https://docs.docker.com/compose/reference/up/)) command will pull the images from Docker Hub and then link them together based on the information inside the docker-compose.yml file. This will create ports, links between containers, and configure applications as requrired
 
