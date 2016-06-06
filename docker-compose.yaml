@@ -1,0 +1,24 @@
+log:
+    image: elasticsearch
+    ports:
+        - "9200:9200"
+        - "9300:9300"
+    environment:
+        - Des.node.name="docker-local"
+    restart: always
+        
+kibana:
+    image: kibana
+    ports:
+        - "5601:5601"
+    links:
+        - log:elasticsearch
+    restart: always
+        
+curator_with_cron:
+    build: .
+    command: "--host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days"
+    links:
+        - log:elasticsearch
+    restart: always
+    
