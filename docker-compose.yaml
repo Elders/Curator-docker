@@ -22,7 +22,7 @@ kibana:
     restart: always
         
 curator_with_cron:
-    image: eldersoss/curator-docker
+    image: eldersoss/curator-docker:2.0.0-beta0001
     command: "--host elasticsearch --port 9200 delete_indices --filter_list '{\"filtertype\":\"age\", \"source\":\"name\",\"direction\":\"older\", \"timestring\":\"%Y.%m.%d\", \"unit\":\"days\", \"unit_count\":\"10\" }'"
     links:
         - log:elasticsearch
