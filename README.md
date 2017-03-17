@@ -21,7 +21,7 @@ Docker image including latest version of [Alpine](https://github.com/gliderlabs/
 
 
 Example for version 2.0 using curator 4.2.6:
-`docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete_indices --filter_list '{"filtertype":"age", "source":"name","direction":"older", "timestring":"%Y.%m.%d", "unit":"days", "unit_count":"10"}'`
+`docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete_indices --filter_list '{\"filtertype\":\"age\", \"source\":\"name\",\"direction\":\"older\", \"timestring\":\"%Y.%m.%d\", \"unit\":\"days\", \"unit_count\":\"10\"}'`
 
 Example for version 1.0 using curator 3.5.1:
 `docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days`
