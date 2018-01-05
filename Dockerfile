@@ -3,7 +3,7 @@ MAINTAINER Elders
 
 RUN apk --update --upgrade add python py-pip && \
     pip install --upgrade pip && \
-    pip install -U elasticsearch-curator===4.2.6
+    pip install -U elasticsearch-curator===5.4.1
 
 COPY ./bin/ /usr/local/bin
 
