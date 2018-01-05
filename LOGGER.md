@@ -7,6 +7,18 @@ Dockerized version of ElasticSearch, Kibana and Curator run as CRON daily task
 2. Kibana container to visualize data stored in ElasticSearch
 3. Alpine container with daily CRON job to delete Elastic Search indices older then 10 days using Curator
 
+## Linux install
+
+### Setup docker-compose
+Download the instalation file: `curl -L https://raw.githubusercontent.com/Elders/Curator-docker/release-3.0.0/install-docker-compose.sh -o ./install-docker-compose.sh`
+Setup permissions: `chmod +x install-docker-compose.sh`
+Execute the instalation file: `bash install-docker-compose.sh`
+
+### Setup Logger
+Download the instalation file: `curl -L https://raw.githubusercontent.com/Elders/Curator-docker/release-3.0.0/install-log.sh -o ./install-log.sh`
+Setup permissions: `chmod +x install-log.sh`
+Execute the instalation file: `bash install-log.sh`
+
 ## Install
 
 The instructions assume that you have already installed [Docker](https://docs.docker.com/engine/installation/) and [Docker Compose](https://docs.docker.com/compose/install/)

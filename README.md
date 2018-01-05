@@ -19,17 +19,16 @@ Docker image including latest version of [Alpine](https://github.com/gliderlabs/
 
 `{curator-command}`- [reference](https://www.elastic.co/guide/en/elasticsearch/client/curator/3.5/commands.html)
 
+**[Example usage in multi-container setup](https://github.com/Elders/Curator-docker/blob/master/LOGGER.md)**
 
 Example for version 3.0 using curator 5.4.1:
-* TBA
+`docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete_indices --filter_list '{\"filtertype\":\"age\",\"source\":\"name\",\"direction\":\"older\",\"timestring\":\"%Y.%m.%d\",\"unit\":\"days\",\"unit_count\":\"10\"}'`
 
 Example for version 2.0 using curator 4.2.6:
 `docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete_indices --filter_list '{\"filtertype\":\"age\",\"source\":\"name\",\"direction\":\"older\",\"timestring\":\"%Y.%m.%d\",\"unit\":\"days\",\"unit_count\":\"10\"}'`
 
 Example for version 1.0 using curator 3.5.1:
 `docker run -d --name curator_cron --link dockerelasticsearchkibanacurator_log_1:elasticsearch eldersoss/curator-docker --host elasticsearch --port 9200 delete indices --older-than 10 --timestring '%Y.%m.%d' --time-unit days`
-
-**[Example usage in multi-container setup](https://github.com/Elders/Curator-docker/blob/master/LOGGER.md)**
 
 
 **Version 3.0 is working with:**
