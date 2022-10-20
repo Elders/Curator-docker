@@ -17,7 +17,7 @@ services:
                 soft: -1
                 hard: -1
         volumes:
-            - eslogdata:/usr/share/elasticsearch-log/data
+            - eslogdata:/usr/share/elasticsearch/data
         networks:
             - log-network
         restart: always
